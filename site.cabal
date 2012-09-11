@@ -1,0 +1,12 @@
+Name:                 v7
+Version:              0.0.1
+Description:          www.mohanzhang.com v7
+Author:               Mohan Zhang
+Maintainer:           mohan@mohanzhang.com
+Build-Type:           Simple
+Cabal-Version:        >=1.8
+
+Executable site
+  Main-is:            Site.hs
+  Build-Depends:      base,
+                      hakyll
