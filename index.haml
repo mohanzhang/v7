@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title Test
+    %link{"rel" => "stylesheet", "href" => "style.css", "type" => "text/css"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
+    %script{:src => "/javascripts/jquery.bigtext.js"}
+    :coffeescript
+      $ () ->
+        $("#mainHeading").bigtext({childSelector: '> h1'})
+        $("#bylines").bigtext({childSelector: '> h2'})
+  %body
+    .navbar.navbar-static-top
+      .navbar-inner
+        %a.brand{:href => "#"} www.mohanzhang.com
+        %p.navbar-text.pull-right v7
+    #masthead
+      .container-fluid
+        .row-fluid
+          .span8
+            #mainHeading
+              %h1 LIFE IS LEARNING
+          .span4
+            #bylines
+              %h2 and earning and yearning.
+              %h2 Sometimes it is burning and turning and churning.
+              %h2 But it is always <em>learning</em>.
+      #badgeField.container-fluid
+        .row-fluid
+          .span6.badgeBox
+            %h4 Life
+          .span6.badgeBox
+            %h4 Technology
+        .row-fluid
+          .span6.badgeBox
+            %h4 Athletics
+          .span6.badgeBox
+            %h4 The Arts
+        .row-fluid
+          .span12.badgeBox
+            %h4 Language
+
+

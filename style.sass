@@ -1,0 +1,49 @@
+$paynesgray: #3D403F
+$mediumgray: #737A79
+$bluegreen: #91BAB3
+$linenblue: #2B4457
+$grayblue: #536878
+
+$bodyBackground: $mediumgray
+$navbarBackground: $paynesgray
+$navbarBackgroundHighlight: $paynesgray - #020202
+$navbarText: $mediumgray
+$navbarBrandColor: $mediumgray
+$navbarLinkColor: $bluegreen
+
+$serifFontFamily: 'Caecilia LT Std'
+$sansFontFamily: 'Delicious-Heavy'
+
+@import bootstrap-sass/bootstrap
+
+$headingsFontFamily: $serifFontFamily
+
+.navbar
+  font-family: $serifFontFamily
+
+#masthead
+  #bylines
+    margin-top: 1em
+  h1, h2
+    display: block
+    width: 100%
+    line-height: 1
+    margin: 0
+    padding: 0
+  h1
+    color: $bluegreen
+  h2
+    color: $linenblue
+    em
+      color: $bluegreen
+      font-style: normal
+
+#badgeField
+  .row-fluid
+    margin-bottom: 20px
+  .badgeBox
+    background: $linenblue
+    h4
+      color: $bluegreen
+      margin-left: 1em
+      font-family: $serifFontFamily
