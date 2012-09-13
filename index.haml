@@ -9,6 +9,8 @@
       $ () ->
         $("#mainHeading").bigtext({childSelector: '> h1'})
         $("#bylines").bigtext({childSelector: '> h2'})
+        $("#divider a").click () ->
+          $("#divider .dividerMessage").slideToggle()
   %body
     .navbar.navbar-static-top
       .navbar-inner
@@ -25,19 +27,78 @@
               %h2 and earning and yearning.
               %h2 Sometimes it is burning and turning and churning.
               %h2 But it is always <em>learning</em>.
-      #badgeField.container-fluid
-        .row-fluid
-          .span6.badgeBox
+
+    #divider
+      .dividerTop
+        %a{:href => "#"} who are you?
+      .dividerMessage
+        %p
+          Hi! My name is Mohan Zhang and this is version seven of my online
+          home. I used to share quite a bit of my life on these pages, but
+          recently started feeling like that was undesirable. Over the past few
+          years, I've become a big fan of being as local and present as
+          possible in my life and daily interactions. I really do believe that
+          this is the key to happiness.
+        %p
+          While that may be the case, I can still appreciate the power that the
+          Internet has had in making connections where there wouldn't have been
+          any, and don't wish to marginalize that kind of happenstance. As a
+          result, my website has now become a repository of the skills I am
+          developing in my person, and these are the exact skills and interests
+          I wish to make the topic of our conversation, since I wish to meet
+          those who can help me progress&mdash;that person might be you!
+        %p
+          In the boxes below, I display a few "badges" representing my
+          individual journeys of learning in various topics. A green background
+          means that I am pursuing the subject actively; a yellow background
+          means that my efforts have stalled (but would gladly pick things up
+          again given the opportunity); and a gray background means that the
+          topic of interest is now considered a past passion (i.e. unlikely
+          that I will revive it).
+        %p
+          Finally, you will also notice that there is a sequence of wedges that
+          light up clockwise from the top. These represent the four stages of
+          competence: Unconscious Incompetence (top), Conscious Incompetence
+          (right), Conscious Competence (bottom), and Unconscious Competence
+          (left). You can read more about it <a href="https://en.wikipedia.org/wiki/Four_stages_of_competence">here</a>.
+        %p
+          It is worth mentioning that I will never assign the wedge
+          representing the last stage of learning (Unconscious Competence) to
+          myself. That's where you come in: if you believe me to be truly
+          unconsciously competent in any of the badges below, please get in
+          touch!  It is likely that you, too, will be unconsciously competent
+          in the subject matter (for how else could you have judged me to be
+          so?) and we might learn a lot from each other. Only then might I
+          grant myself the coveted last wedge.
+      .dividerBottom
+
+    #badgeField.container-fluid
+      .row-fluid
+        .span6
+          .badgeBox
             %h4 Life
-          .span6.badgeBox
+            .badgeImg
+              %img{:src => "/images/badges/camping.png"}
+              %h6 Camping
+            .badgeImg
+              %img{:src => "/images/badges/cooking.png"}
+              %h6 Cooking
+            .badgeImg
+              %img{:src => "/images/badges/eating.png"}
+              %h6 Eating
+        .span6
+          .badgeBox
             %h4 Technology
-        .row-fluid
-          .span6.badgeBox
+      .row-fluid
+        .span6
+          .badgeBox
             %h4 Athletics
-          .span6.badgeBox
+        .span6
+          .badgeBox
             %h4 The Arts
-        .row-fluid
-          .span12.badgeBox
+      .row-fluid
+        .span12
+          .badgeBox
             %h4 Language
 
 

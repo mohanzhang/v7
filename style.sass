@@ -3,8 +3,11 @@ $mediumgray: #737A79
 $bluegreen: #91BAB3
 $linenblue: #2B4457
 $grayblue: #536878
+$brick: #4D3636
 
 $bodyBackground: $mediumgray
+
+$navbarHeight: 50px
 $navbarBackground: $paynesgray
 $navbarBackgroundHighlight: $paynesgray - #020202
 $navbarText: $mediumgray
@@ -14,12 +17,22 @@ $navbarLinkColor: $bluegreen
 $serifFontFamily: 'Caecilia LT Std'
 $sansFontFamily: 'Delicious-Heavy'
 
+$linkColor: $brick
+$textColor: #bb9
+
 @import bootstrap-sass/bootstrap
 
 $headingsFontFamily: $serifFontFamily
 
+body
+  overflow-y: scroll
+
 .navbar
   font-family: $serifFontFamily
+  .navbar-inner
+    background: url(/images/bg_paynesgray.png) center $paynesgray
+  a.brand
+    font-size: 16px
 
 #masthead
   #bylines
@@ -38,12 +51,41 @@ $headingsFontFamily: $serifFontFamily
       color: $bluegreen
       font-style: normal
 
+#divider
+  width: 100%
+  margin: 30px 0
+  .dividerTop
+    text-align: center
+    height: 27px
+    padding-top: 15px
+    background: url(/images/divider.png) no-repeat center top
+    a
+      display: block
+  .dividerMessage
+    display: none
+    margin: 0 auto
+    max-width: 790px
+    padding: 20px 0
+    background: url(/images/bg_mediumgray.png) $mediumgray
+    p
+      font-family: $serifFontFamily
+      padding-left: 2em
+      padding-right: 2em
+  .dividerBottom
+    height: 42px
+    background: url(/images/divider.png) no-repeat center bottom
+
 #badgeField
   .row-fluid
     margin-bottom: 20px
   .badgeBox
-    background: $linenblue
+    background: url(/images/bg_linenblue.png) $linenblue
+    padding: 1em
     h4
       color: $bluegreen
       margin-left: 1em
       font-family: $serifFontFamily
+    .badgeImg
+      display: inline-block
+      margin: 10px
+      text-align: center
