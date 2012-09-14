@@ -6,6 +6,8 @@
     %link{"rel" => "stylesheet", "href" => "css/font-awesome.css", "type" => "text/css"}
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
     %script{:src => "/javascripts/jquery.bigtext.js"}
+    <script type="text/javascript" src="//use.typekit.net/jzb1qoc.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     :coffeescript
       $ () ->
         $("#mainHeading").bigtext({childSelector: '> h1'})
@@ -13,32 +15,32 @@
         $("#divider a").click (e) ->
           e.preventDefault()
           $("#divider .dividerMessage").slideToggle()
+        $("#creditsLink").click (e) ->
+          e.preventDefault()
+          $.get "/credits.html", (data) ->
+            $("#credits").html(data)
+            $("#credits").fadeToggle()
   %body
-    .navbar.navbar-static-top
-      .navbar-inner
-        %a.brand{:href => "/"} www.mohanzhang.com
-        %ul.nav
-          %li
-            %a{:href => "http://mohanzhang.wordpress.com"} <i class="icon-rss"></i> Wordpress
-          %li
-            %a{:href => "https://www.github.com/mohanzhang"} <i class="icon-github"></i> GitHub
-        %p.navbar-text.pull-right
-          %i.icon-envelope-alt
-          mohan@&lt;thisdomain&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          %i.icon-tag
-          v7.0.0
-    #masthead
-      .container-fluid
-        .row-fluid
-          .span8
-            #mainHeading
-              %h1 LIFE IS LEARNING
-          .span4
-            #bylines
-              %h2 and earning and yearning.
-              %h2 Sometimes it is burning and turning and churning.
-              %h2 But it is always <em>learning</em>.
+    %header
+      .navbar.navbar-static-top
+        .navbar-inner
+          %a.brand{:href => "/"} www.mohanzhang.com
+          %ul.nav.pull-right
+            %li
+              %a{:href => "http://mohanzhang.wordpress.com"} <i class="icon-rss"></i> Wordpress
+            %li
+              %a{:href => "https://www.github.com/mohanzhang"} <i class="icon-github"></i> GitHub
+      #masthead
+        .container-fluid
+          .row-fluid
+            .span8
+              #mainHeading
+                %h1 LIFE IS LEARNING
+            .span4
+              #bylines
+                %h2 and earning and yearning.
+                %h2 Sometimes it is burning and turning and churning.
+                %h2 But it is always <em>learning</em>.
 
     #divider
       .dividerTop
@@ -314,3 +316,14 @@
             .badgeImg
               %img{:src => "/images/badges/sustainability.png"}
               %h6 Sustainability
+
+    %footer#footer
+      %p.pull-left
+        Copyright &copy; #{Time.now.year}. <a href="#" id="creditsLink">Some icons</a> by others.
+      %p.pull-right
+        %i.icon-envelope-alt
+        mohan@&lt;this domain&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        %i.icon-tag
+        v7.0.0
+    #credits

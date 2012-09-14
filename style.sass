@@ -15,11 +15,17 @@ $navbarBrandColor: $mediumgray
 $navbarLinkColor: $grayblue
 $navbarLinkColorHover: $bluegreen
 
-$serifFontFamily: 'Caecilia LT Std'
-$sansFontFamily: 'Delicious-Heavy'
-
-$linkColor: $brick
+$linkColor: $grayblue
+$linkColorHover: $bluegreen
 $textColor: #bb9
+
+@font-face
+  font-family: "delicious-heavy"
+  src: url(/fonts/Delicious-Heavy.otf)
+
+$serifFontFamily: museo-slab
+$sansFontFamily: delicious-heavy
+
 
 @import bootstrap-sass/bootstrap
 
@@ -27,6 +33,7 @@ $headingsFontFamily: $serifFontFamily
 
 body
   overflow-y: scroll
+  position: relative
 
 .navbar
   font-family: $serifFontFamily
@@ -62,6 +69,7 @@ body
     background: url(/images/divider.png) no-repeat center top
     a
       display: block
+      color: $brick
   .dividerMessage
     display: none
     margin: 0 auto
@@ -93,3 +101,24 @@ body
       img
         width: 85px
         height: 85px
+
+#footer
+  font-family: $serifFontFamily
+  margin-top: 30px
+  background: url(/images/bg_paynesgray.png) $paynesgray
+  height: 40px
+  padding: 10px 20px
+  p
+    margin: 0
+    padding: 0
+    line-height: 40px
+
+#credits
+  font-family: $serifFontFamily
+  display: none
+  position: absolute
+  left: 100px
+  bottom: 40px
+  background: url(/images/bg_mediumgray.png) $mediumgray
+  padding: 15px
+  width: 400px

@@ -16,21 +16,18 @@ main = hakyllWith config $ do
     compile copyFileCompiler
 
   -- assets
-  match "javascripts/*" $ do
-    route idRoute
-    compile copyFileCompiler
-
-  match "images/*" $ do
-    route idRoute
-    compile copyFileCompiler
-
-  match "images/**/*" $ do
-    route idRoute
-    compile copyFileCompiler
+  match "javascripts/*" $ route idRoute >> compile copyFileCompiler
+  match "images/*" $ route idRoute >> compile copyFileCompiler
+  match "images/**/*" $ route idRoute >> compile copyFileCompiler
+  match "fonts/*" $ route idRoute >> compile copyFileCompiler
 
   match "index.haml" $ do
     route $ setExtension "html"
     compile haml
+
+  match "credits.html" $ do
+    route $ idRoute
+    compile copyFileCompiler
 
   match "style.sass" $ do
     route $ setExtension "css"
