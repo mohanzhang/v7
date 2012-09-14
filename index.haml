@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Test
+    %title www.mohanzhang.com
     %link{"rel" => "stylesheet", "href" => "style.css", "type" => "text/css"}
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
     %script{:src => "/javascripts/jquery.bigtext.js"}
@@ -9,7 +9,8 @@
       $ () ->
         $("#mainHeading").bigtext({childSelector: '> h1'})
         $("#bylines").bigtext({childSelector: '> h2'})
-        $("#divider a").click () ->
+        $("#divider a").click (e) ->
+          e.preventDefault()
           $("#divider .dividerMessage").slideToggle()
   %body
     .navbar.navbar-static-top
@@ -161,6 +162,9 @@
               %img{:src => "/images/badges/perfumery.png"}
               %h6 Perfumery
             .badgeImg
+              %img{:src => "/images/badges/piano.png"}
+              %h6 Piano
+            .badgeImg
               %img{:src => "/images/badges/singing.png"}
               %h6 Singing
             .badgeImg
@@ -176,7 +180,7 @@
               %img{:src => "/images/badges/blender.png"}
               %h6 Blender
             .badgeImg
-              %img{:src => "/images/badges/bryce.png"}
+              %img{:src => "/images/badges/bryce_5.png"}
               %h6 Bryce 5
       .row-fluid
         .span5
@@ -186,14 +190,11 @@
               %img{:src => "/images/badges/git.png"}
               %h6 git
             .badgeImg
-              %img{:src => "/images/badges/mac_osx.png"}
-              %h6 Mac OS X
+              %img{:src => "/images/badges/vim.png"}
+              %h6 vim
             .badgeImg
-              %img{:src => "/images/badges/ubuntu.png"}
-              %h6 Ubuntu
-            .badgeImg
-              %img{:src => "/images/badges/windows.png"}
-              %h6 Windows
+              %img{:src => "/images/badges/xmonad.png"}
+              %h6 XMonad
         .span7
           .badgeBox
             %h4 Web Things
@@ -257,7 +258,7 @@
               %img{:src => "/images/badges/sml_nj.png"}
               %h6 SML/NJ
             .badgeImg
-              %img{:src => "/images/badges/visualbasic.png"}
+              %img{:src => "/images/badges/visual_basic.png"}
               %h6 Visual Basic
       .row-fluid
         .span8
