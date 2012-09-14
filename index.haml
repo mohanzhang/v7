@@ -12,7 +12,7 @@
       $ () ->
         $("#mainHeading").bigtext({childSelector: '> h1'})
         $("#bylines").bigtext({childSelector: '> h2'})
-        $("#divider a").click (e) ->
+        $("#dividerToggleLink").click (e) ->
           e.preventDefault()
           $("#divider .dividerMessage").slideToggle()
         $("#creditsLink").click (e) ->
@@ -44,7 +44,7 @@
 
     #divider
       .dividerTop
-        %a{:href => "#"} who are you?
+        %a{:href => "#", :id => "dividerToggleLink"} who are you?
       .dividerMessage
         %p
           Hi! My name is Mohan Zhang and this is version seven of my online
@@ -79,13 +79,13 @@
         %p
           Finally, it is worth mentioning that I will never assign the wedge
           representing the last stage of learning (Unconscious Competence) to
-          myself. That's where you come in: if you believe me to be truly
-          unconsciously competent in any of the badges below, please get in
-          touch!  It is likely that you, too, will be unconsciously competent
-          in the subject matter (for how else could you have judged me to be
-          so?) and we just might learn a lot from each other. If we both believe
-          each other to be unconsciously competent in a certain skill or interest,
-          then there's a good chance we both might be, after all!
+          myself. That's where you come in: if you believe me to have achieved
+          true and complete competence in any of the badges below, please get
+          in touch!  It is likely that you, too, will be very proficient in the
+          subject matter (for how else could you have judged me to be so?) and
+          we just might learn a lot from each other. If we both believe each
+          other to be at the UC stage in a certain skill or interest, then
+          there's a good chance we both might be, after all!
       .dividerBottom
 
     #badgeField.container-fluid
