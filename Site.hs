@@ -6,13 +6,21 @@ import Control.Arrow
 import Hakyll
 
 main = hakyllWith config $ do
-  -- twitter bootstrap
-  match "bootstrap-img/*" $ do
-    route idRoute
+  -- font awesome
+  match "fontawesome-font/*" $ do
+    route $ gsubRoute "fontawesome-font/" (const "font/")
+    compile copyFileCompiler
+
+  match "fontawesome-css/*" $ do
+    route $ gsubRoute "fontawesome-css/" (const "css/")
     compile copyFileCompiler
 
   -- assets
   match "javascripts/*" $ do
+    route idRoute
+    compile copyFileCompiler
+
+  match "images/*" $ do
     route idRoute
     compile copyFileCompiler
 
