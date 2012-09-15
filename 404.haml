@@ -1,0 +1,22 @@
+.container-fluid
+  .row-fluid
+    .span8.offset2
+      #dialogBase
+        #dialog
+          %p
+            Although this* is probably an instance of "burning and turning and churning"
+            because you just hit a
+          #notFound
+            %p 404 Not Found!
+
+.container-fluid
+  .row-fluid
+    .span8.offset2
+      %p
+        *If you came here via a search engine or external link, you'll probably
+        want to visit the <a href="/">homepage</a> to find out why everything
+        has disappeared.
+
+:coffeescript
+  $ () ->
+    $("#notFound").bigtext({childSelector: '> p'})

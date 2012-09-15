@@ -15,11 +15,6 @@
         $("#dividerToggleLink").click (e) ->
           e.preventDefault()
           $("#divider .dividerMessage").slideToggle()
-        $("#creditsLink").click (e) ->
-          e.preventDefault()
-          $.get "/credits.html", (data) ->
-            $("#credits").html(data)
-            $("#credits").fadeToggle()
   %body
     %header
       .navbar.navbar-static-top

@@ -8,3 +8,11 @@
     %i.icon-tag
     v7.0.0
 #credits
+
+:coffeescript
+  $ () ->
+    $("#creditsLink").click (e) ->
+      e.preventDefault()
+      $.get "/credits.html", (data) ->
+        $("#credits").html(data)
+        $("#credits").fadeToggle()

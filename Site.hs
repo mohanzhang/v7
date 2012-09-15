@@ -34,6 +34,15 @@ main = hakyllWith config $ do
       >>> requireA "partials/footer.haml" (setFieldA "footer" returnA)
       >>> applyTemplateCompiler "layout.haml"
 
+  match "404.haml" $ do
+    route $ setExtension "html"
+    compile $ haml
+      >>> arr fromBody
+      >>> requireA "partials/google_analytics.html" (setFieldA "analytics" returnA)
+      >>> requireA "partials/typekit.html" (setFieldA "typekit" returnA)
+      >>> arr (setField "footer" "")
+      >>> applyTemplateCompiler "layout.haml"
+
   match "layout.haml" $ compile $ haml >>> arr readTemplate
 
   match "credits.html" $ do
