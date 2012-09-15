@@ -21,9 +21,20 @@ main = hakyllWith config $ do
   match "images/**/*" $ route idRoute >> compile copyFileCompiler
   match "fonts/*" $ route idRoute >> compile copyFileCompiler
 
+  -- partials
+  match "partials/*.haml" $ compile haml
+  match "partials/*.html" $ compile getResourceString
+
   match "index.haml" $ do
     route $ setExtension "html"
-    compile haml
+    compile $ haml
+      >>> arr fromBody
+      >>> requireA "partials/google_analytics.html" (setFieldA "analytics" returnA)
+      >>> requireA "partials/typekit.html" (setFieldA "typekit" returnA)
+      >>> requireA "partials/footer.haml" (setFieldA "footer" returnA)
+      >>> applyTemplateCompiler "layout.haml"
+
+  match "layout.haml" $ compile $ haml >>> arr readTemplate
 
   match "credits.html" $ do
     route $ idRoute
