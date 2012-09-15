@@ -22,6 +22,12 @@
         $("#dividerToggleLink").click (e) ->
           e.preventDefault()
           $("#divider .dividerMessage").slideToggle()
+
+        if $.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase()))
+          setTimeout () ->
+              $("#mainHeading").trigger("resize")
+            , 500
+
   %body
     %header
       .navbar.navbar-static-top
