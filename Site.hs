@@ -5,7 +5,7 @@ import Control.Arrow
 
 import Hakyll
 
-main = hakyllWith config $ do
+main = hakyll $ do
   -- font awesome
   match "fontawesome-font/*" $ do
     route $ gsubRoute "fontawesome-font/" (const "font/")
@@ -58,7 +58,3 @@ sass = getResourceString >>> unixFilter "sass" ["-s"] >>> arr compressCss
 
 haml :: Compiler Resource String
 haml = getResourceString >>> unixFilter "haml" ["-s", "-r", "coffee-filter"]
-
-config :: HakyllConfiguration
-config = defaultHakyllConfiguration
-    { deployCommand = "" }
