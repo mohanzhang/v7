@@ -8,10 +8,17 @@
     %script{:src => "/javascripts/jquery.bigtext.js"}
     $typekit$
     $analytics$
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
     :coffeescript
       $ () ->
-        $("#mainHeading").bigtext({childSelector: '> h1'})
-        $("#bylines").bigtext({childSelector: '> h2'})
+        WebFont.load
+          custom:
+            families: ['delicious-heavy']
+            urls : ['/style.css']
+          active: () ->
+            $("#mainHeading").bigtext({childSelector: '> h1'})
+            $("#bylines").bigtext({childSelector: '> h2'})
+
         $("#dividerToggleLink").click (e) ->
           e.preventDefault()
           $("#divider .dividerMessage").slideToggle()
