@@ -57,4 +57,4 @@ sass :: Compiler Resource String
 sass = getResourceString >>> unixFilter "sass" ["-s"] >>> arr compressCss
 
 haml :: Compiler Resource String
-haml = getResourceString >>> unixFilter "haml" ["-s", "-r", "coffee-filter"]
+haml = getResourceString >>> unixFilter "haml" ["-s", "-r", "coffee-filter", "-f", "html5"]
