@@ -49,7 +49,7 @@ main = hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
-  match "style.sass" $ do
+  match "style*.sass" $ do
     route $ setExtension "css"
     compile sass
 
