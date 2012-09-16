@@ -26,6 +26,10 @@
           e.preventDefault()
           $("#divider .dividerMessage").slideToggle()
 
+        if $.browser.msie
+          $("#mainHeading").bigtext({childSelector: '> h1'})
+          $("#bylines").bigtext({childSelector: '> h2'})
+
         if $.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase()))
           setTimeout () ->
               $("#mainHeading").trigger("resize")
