@@ -31,9 +31,8 @@
           $("#bylines").bigtext({childSelector: '> h2'})
 
         if $.browser.webkit && !(/chrome/.test(navigator.userAgent.toLowerCase()))
-          setTimeout () ->
-              $("#mainHeading").trigger("resize")
-            , 500
+          $(window).load () ->
+            $("#mainHeading").trigger("resize")
 
   %body
     %header
