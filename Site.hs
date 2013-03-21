@@ -1,7 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main (main) where
 
-import Control.Arrow
+import Control.Applicative ((<$>))
+import Data.Monoid
+import Data.Maybe
 
 import Hakyll
 
@@ -21,29 +23,22 @@ main = hakyll $ do
   match "images/**/*" $ route idRoute >> compile copyFileCompiler
   match "fonts/*" $ route idRoute >> compile copyFileCompiler
 
+  -- page template
+  match "layout.haml" $ compile hamlTemplateCompiler
+
   -- partials
-  match "partials/*.haml" $ compile haml
   match "partials/*.html" $ compile getResourceString
+  match "partials/*.haml" $ compile haml
 
   match "index.haml" $ do
     route $ setExtension "html"
-    compile $ haml
-      >>> arr fromBody
-      >>> requireA "partials/google_analytics.html" (setFieldA "analytics" returnA)
-      >>> requireA "partials/typekit.html" (setFieldA "typekit" returnA)
-      >>> requireA "partials/footer.haml" (setFieldA "footer" returnA)
-      >>> applyTemplateCompiler "layout.haml"
+    compile $ do
+      haml >>= loadAndApplyTemplate "layout.haml" (staticContextWithFooter "partials/footer.haml")
 
   match "404.haml" $ do
     route $ setExtension "html"
-    compile $ haml
-      >>> arr fromBody
-      >>> requireA "partials/google_analytics.html" (setFieldA "analytics" returnA)
-      >>> requireA "partials/typekit.html" (setFieldA "typekit" returnA)
-      >>> arr (setField "footer" "")
-      >>> applyTemplateCompiler "layout.haml"
-
-  match "layout.haml" $ compile $ haml >>> arr readTemplate
+    compile $ do
+      haml >>= loadAndApplyTemplate "layout.haml" staticContextWithoutFooter
 
   match "credits.html" $ do
     route $ idRoute
@@ -53,8 +48,29 @@ main = hakyll $ do
     route $ setExtension "css"
     compile sass
 
-sass :: Compiler Resource String
-sass = getResourceString >>> unixFilter "sass" ["-s"] >>> arr compressCss
+staticContext :: Maybe Identifier -> Context String
+staticContext maybeFooter = mconcat [
+    field "typekit" (\_ -> loadBody "partials/typekit.html")
+  , field "analytics" (\_ -> loadBody "partials/google_analytics.html")
+  , case maybeFooter of
+      Nothing -> constField "footer" ""
+      Just f -> field "footer" (\_ -> loadBody f)
+  , defaultContext
+  ]
 
-haml :: Compiler Resource String
-haml = getResourceString >>> unixFilter "haml" ["-s", "-r", "coffee-filter", "-f", "html5"]
+staticContextWithFooter :: Identifier -> Context String
+staticContextWithFooter = staticContext . Just
+
+staticContextWithoutFooter :: Context String
+staticContextWithoutFooter = staticContext Nothing
+
+sass :: Compiler (Item String)
+sass = getResourceString >>= withItemBody (unixFilter "sass" ["-s"]) >>= return . fmap compressCss
+
+haml :: Compiler (Item String)
+haml = getResourceString >>= withItemBody (unixFilter "haml" ["-s", "-r", "coffee-filter", "-f", "html5"])
+
+hamlTemplateCompiler :: Compiler (Item Template)
+hamlTemplateCompiler = cached "Hakyll.Web.Template.templateCompiler" $ do
+    item <- haml
+    return $ fmap readTemplate item
