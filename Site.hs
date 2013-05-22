@@ -33,7 +33,9 @@ main = hakyll $ do
   match "index.haml" $ do
     route $ setExtension "html"
     compile $ do
-      haml >>= loadAndApplyTemplate "layout.haml" (staticContextWithFooter "partials/footer.haml")
+      let baseContext = staticContextWithFooter "partials/footer.haml"
+      let timelineField = field "timeline" (\_ -> loadBody "partials/timeline.html")
+      haml >>= applyAsTemplate timelineField >>= loadAndApplyTemplate "layout.haml" baseContext
 
   match "404.haml" $ do
     route $ setExtension "html"

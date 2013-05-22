@@ -1,0 +1,30 @@
+-6 New Jersey; (#555)
+-5 Honolulu, Oahu, HI; (#128)
+-2 Kahului, Maui, HI;
+0 Hana, Maui, HI;
+1 Kipahulu, Maui, HI;
+79 Kahului, Maui, HI;
+80 Auckland, NZ; (#182)
+80 Christchurch, NZ;
+80 Ruapuna, NZ;
+92 Cromwell, NZ;
+92 Queenstown, NZ;
+92 Arrowtown, NZ;
+93 Macetown, NZ;
+95 Arrowtown, NZ;
+95 Ruapuna, NZ;
+101 Geraldine, NZ;
+101 Christchurch, NZ;
+102 Kaikoura, NZ;
+102 Picton, NZ;
+103 Wellington, NZ;
+104 Auckland, NZ;
+104 Hahei, NZ;
+108 Whitianga, NZ;
+108 Kuaotunu, NZ;
+108 Hahei, NZ;
+115 Cathedral Cove, NZ;
+115 Hahei, NZ;
+117 Auckland, NZ;
+118 Shanghai, China; (#811)
+119 Beijing, China;
