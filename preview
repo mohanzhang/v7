@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bundle exec dist/build/site/site preview
