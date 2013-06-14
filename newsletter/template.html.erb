@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <script>
+        $(function() {
+          encrypted = $("#message").text().replace(/\s/g, '');
+
+          var passphrase = prompt("Please enter the decryption key");
+
+          if (passphrase != null) {
+            var decrypted = CryptoJS.AES.decrypt(encrypted, passphrase);
+
+            $("#output").html(decrypted.toString(CryptoJS.enc.Utf8));
+            document.title = $("#output").find("h1").text();
+            $("#message").fadeOut();
+            $("#output").fadeIn();
+          }
+        });
+
+        setTimeout("window.close();", 1200000)
+    </script>
+    <style>
+      #output {
+        display: none;
+        width: 640px;
+        margin: 30px auto;
+        font-size: large;
+        font-family: Georgia, serif;
+        line-height: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="output">
+    </div>
+    <hr />
+    <div id="message">
+      <%= @cipher64 %>
+    </div>
+  </body>
+</html>
