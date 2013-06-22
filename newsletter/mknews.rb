@@ -3,6 +3,9 @@
 # This script generates a webpage that allows readers to decrypt an encrypted
 # newsletter. The newsletter is input using textile, and rendered in HTML using
 # homoglyphs where possible.
+#
+# Example usage:
+# ruby mknews.rb 2013_june.markdown
 
 require 'rubygems'
 require 'rdiscount'
@@ -56,7 +59,7 @@ TMP_PROCESSED_FILE = "temp_processed.html"
 TMP_CIPHERED = "temp_ciphered"
 
 glyphed_input = sub_glyphs(input)
-markdown = RDiscount.new(glyphed_input, :smart, :autolink)
+markdown = RDiscount.new(input, :smart, :autolink)
 rendered_input = markdown.to_html
 
 File.open(TMP_PROCESSED_FILE, "w") {|f| f.write rendered_input}
